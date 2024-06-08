@@ -11,7 +11,7 @@ public class ScaleAnim : MonoBehaviour
     public Vector3 Start => start;
     public float Scale => scale;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         start = transform.localScale;
     }

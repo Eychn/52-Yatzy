@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         if (canRoll)
         {
             canRoll = false;
-            int res = 5;// random.Next(0, 6);
+            int res = random.Next(0, 6);
             win = res == 5;
             dice.Roll(res);
         }
@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
         canRoll = true;
 
         if (win)
+        {
             score.Increase();
+            dice.Shake();
+        }
     }
 }

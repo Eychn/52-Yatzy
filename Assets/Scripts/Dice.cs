@@ -10,15 +10,24 @@ public class Dice : MonoBehaviour
     [SerializeField] private float startDuration = 0.1f;
     [SerializeField] private float stopDuration = 0.1f;
     [SerializeField] private Vector3[] faces = new Vector3[6];
+    [SerializeField] private float shakingSpeed = 1f;
+    [SerializeField] private float shakingForce = 1f;
+    [SerializeField] private float shakingDuration = 0.3f;
 
     private float rollTime = 0.0f;
     private Quaternion end = Quaternion.identity;
+
+    private bool isShaking = false;
+    private float shakingTime = 0f;
+    private float shakingStep = 1f;
+    private Vector3 startPos = Vector3.zero;
 
     private Action endRollCallback = null;
 
     public void Init(Action endRollCallback)
     {
         this.endRollCallback = endRollCallback;
+        startPos = transform.localPosition;
     }
 
     public void Roll(int value)
@@ -27,6 +36,13 @@ public class Dice : MonoBehaviour
         end = Quaternion.LookRotation(faces[value % 6]);
         enabled = true;
         StartCoroutine(StartRotation());
+    }
+
+    public void Shake()
+    {
+        isShaking = true;
+        shakingTime = 0f;
+        shakingStep = shakingDuration / shakingSpeed;
     }
 
     private IEnumerator StartRotation()
@@ -61,5 +77,23 @@ public class Dice : MonoBehaviour
         }
 
         transform.rotation = dest;
+    }
+
+    private void Update()
+    {
+        if (isShaking)
+        {
+            shakingTime += Time.deltaTime;
+            transform.localPosition = startPos + Vector3.right * Mathf.Sin(shakingTime) * shakingForce;
+
+            if (shakingTime >= shakingStep)
+                shakingForce *= -1f;
+
+            if (shakingTime >= shakingDuration)
+            {
+                isShaking = false;
+                transform.localPosition = startPos;
+            }
+        }
     }
 }

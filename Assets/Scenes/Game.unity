@@ -1194,10 +1194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdb2892a033de24ba5538f764b77736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 1.111111
+  scale: 1.2
   epsilon: 0.001
-  speed: 2
+  speed: 3
   txt: {fileID: 901670987}
+  colorDuration: 0.3
+  colorSpeed: 0.3
+  color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1465164548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1459,9 @@ MonoBehaviour:
   - {x: 0, y: 1, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 0, y: 0, z: -1}
+  shakingSpeed: 3
+  shakingForce: 1
+  shakingDuration: 0.3
 --- !u!1 &1571748928
 GameObject:
   m_ObjectHideFlags: 0
