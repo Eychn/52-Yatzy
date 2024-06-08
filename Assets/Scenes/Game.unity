@@ -292,7 +292,7 @@ Camera:
   m_GameObject: {fileID: 110903271}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -604,8 +604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2751359}
   m_AnchorMax: {x: 1, y: 0.8}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364169533
 MonoBehaviour:
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dice: {fileID: 1569932383}
-  scoreTxt: {fileID: 901670987}
+  score: {fileID: 901670989}
 --- !u!4 &476957654
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 901670986}
   - component: {fileID: 901670988}
   - component: {fileID: 901670987}
+  - component: {fileID: 901670989}
   m_Layer: 5
   m_Name: ScoreTxt
   m_TagString: Untagged
@@ -1181,6 +1182,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901670985}
   m_CullTransparentMesh: 1
+--- !u!114 &901670989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901670985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdb2892a033de24ba5538f764b77736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 1.111111
+  epsilon: 0.001
+  speed: 2
+  txt: {fileID: 901670987}
 --- !u!1 &1465164548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bed12d4f26f17458b992d1e2b5d8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 0.95
+  epsilon: 0.001
+  speed: 2
   onClick:
     m_PersistentCalls:
       m_Calls:
@@ -1285,9 +1305,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  scale: 0.95
-  epsilon: 0.001
-  speed: 2
 --- !u!1 &1565934955
 GameObject:
   m_ObjectHideFlags: 0

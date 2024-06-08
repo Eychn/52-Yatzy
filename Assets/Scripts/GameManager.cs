@@ -1,15 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private static System.Random random = null;
 
     [SerializeField] private Dice dice = null;
-    [SerializeField] private TMP_Text scoreTxt = null;
-    private int score = 0;
+    [SerializeField] private Score score = null;
     private bool win = false;
     private bool canRoll = true;
 
@@ -24,7 +21,7 @@ public class GameManager : MonoBehaviour
         if (canRoll)
         {
             canRoll = false;
-            int res = random.Next(0, 6);
+            int res = 5;// random.Next(0, 6);
             win = res == 5;
             dice.Roll(res);
         }
@@ -33,7 +30,8 @@ public class GameManager : MonoBehaviour
     private void OnEndRoll()
     {
         canRoll = true;
+
         if (win)
-            scoreTxt.text = (++score).ToString();
+            score.Increase();
     }
 }
